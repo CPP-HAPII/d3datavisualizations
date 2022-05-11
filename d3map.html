@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale">
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+
+    <title>Test Map</title>
+
+    <style>
+      path:hover {
+        fill: #468499;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <svg id="my_dataviz" width="1400" height="1000"></svg>
+
+    <script>
+      var svg = d3.select("svg"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
+
+      var path = d3.geoPath();
+      var projection = d3.geoMercator()
+        .scale(2000)
+        .center([-110, 35])
+        .translate([width / 2, height / 2]);
+
+      d3.json("https://raw.githubusercontent.com/datadesk/california-topojson-atlas/master/build/counties/processed/state-level/06.json", function(data) {
+
+        svg.append("g")
+          .selectAll("path")
+          .data(data.features)
+          .enter().append("path")
+          .attr("fill", "#bdcfdf")
+          .attr("d", d3.geoPath()
+            .projection(projection)
+          )
+          .style("stroke", "#fff")
+      })
+
+    </script>
+  </body>
+
+</html>

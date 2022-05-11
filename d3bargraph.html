@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>D3BarChart</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+<div style="text-align: center;">
+<h1>Pomona Water Use</h1>
+<div id="d3-container"></div>
+</div>
+<body onload="main()">
+    <div id="tooltip" class="hidden">
+        <p><strong>Bar Value</strong></p>
+        <p><span id="value">100</span></p>
+    </div>
+<svg id="svg" width="600" height="400"></svg>
+</body>
+
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="myScript.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</body>
+
+</html>
